@@ -15,7 +15,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="NeuPy is a Python library for Artificial Neural Networks. NeuPy supports many different types of Neural Networks from a simple perceptron to deep learning models.">
         <meta name="viewport" content="width=device-width">
-        <title>neupy.layers.connections package &mdash; NeuPy</title>
+        <title>neupy.algorithms.competitive.randomized_pca module &mdash; NeuPy</title>
             <link rel="stylesheet" href="../_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="../_static/sphinx.css" type="text/css">
             <link rel="stylesheet" href="../_static/main.css" type="text/css">
@@ -190,22 +190,128 @@
     </nav>
 
 <div class="main-container" role="main"><div class="main wrapper body clearfix"><article>
-    <div class="section" id="neupy-layers-connections-package">
-<h1>neupy.layers.connections package</h1>
-<div class="section" id="submodules">
-<h2>Submodules</h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="neupy.layers.connections.base.html">neupy.layers.connections.base module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="neupy.layers.connections.graph.html">neupy.layers.connections.graph module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="neupy.layers.connections.inline.html">neupy.layers.connections.inline module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="neupy.layers.connections.utils.html">neupy.layers.connections.utils module</a></li>
-</ul>
-</div>
-</div>
-<div class="section" id="module-neupy.layers.connections">
-<span id="module-contents"></span><h2>Module contents</h2>
-</div>
+    <div class="section" id="module-neupy.algorithms.competitive.randomized_pca">
+<span id="neupy-algorithms-competitive-randomized-pca-module"></span><h1>neupy.algorithms.competitive.randomized_pca module</h1>
+<dl class="function">
+<dt id="neupy.algorithms.competitive.randomized_pca.randomized_pca">
+<span class="descclassname">neupy.algorithms.competitive.randomized_pca.</span><span class="descname">randomized_pca</span><span class="sig-paren">(</span><em>data</em>, <em>n_componets</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/competitive/randomized_pca.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Randomized PCA based on the scikit-learn
+implementation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : 2d array-like</p>
+<p><strong>n_components</strong> : int</p>
+<blockquote>
+<div><p>Number of PCA components</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">(eigenvectors, eigenvalues)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="neupy.algorithms.competitive.randomized_pca.randomized_range_finder">
+<span class="descclassname">neupy.algorithms.competitive.randomized_pca.</span><span class="descname">randomized_range_finder</span><span class="sig-paren">(</span><em>A</em>, <em>size</em>, <em>n_iter</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/competitive/randomized_pca.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Computes an orthonormal matrix whose range
+approximates the range of A.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>A: 2D array</strong></p>
+<blockquote>
+<div><p>The input data matrix</p>
+</div></blockquote>
+<p><strong>size: integer</strong></p>
+<blockquote>
+<div><p>Size of the return array</p>
+</div></blockquote>
+<p><strong>n_iter: integer</strong></p>
+<blockquote>
+<div><p>Number of power iterations used to stabilize the result</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Q: 2D array</p>
+<blockquote class="last">
+<div><p>A (size x size) projection matrix, the range of which
+approximates well the range of the input matrix A.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>scikit-learn implementation</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="neupy.algorithms.competitive.randomized_pca.randomized_svd">
+<span class="descclassname">neupy.algorithms.competitive.randomized_pca.</span><span class="descname">randomized_svd</span><span class="sig-paren">(</span><em>M</em>, <em>n_components</em>, <em>n_oversamples=10</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/competitive/randomized_pca.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Computes a truncated randomized SVD.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>M: ndarray or sparse matrix</strong></p>
+<blockquote>
+<div><p>Matrix to decompose</p>
+</div></blockquote>
+<p><strong>n_components: int</strong></p>
+<blockquote>
+<div><p>Number of singular values and vectors to extract.</p>
+</div></blockquote>
+<p><strong>n_oversamples: int (default is 10)</strong></p>
+<blockquote class="last">
+<div><p>Additional number of random vectors to sample the range of M so as
+to ensure proper conditioning. The total number of random vectors
+used to find the range of M is n_components + n_oversamples. Smaller
+number can improve speed but can negatively impact the quality of
+approximation of singular vectors and singular values.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>scikit-learn implementation</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="neupy.algorithms.competitive.randomized_pca.svd_flip">
+<span class="descclassname">neupy.algorithms.competitive.randomized_pca.</span><span class="descname">svd_flip</span><span class="sig-paren">(</span><em>u</em>, <em>v</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/competitive/randomized_pca.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Sign correction to ensure deterministic output from SVD.
+Adjusts the columns of u and the rows of v such that the
+loadings in the columns in u that are largest in absolute
+value are always positive.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>u, v</strong> : ndarray</p>
+<blockquote>
+<div><p>u and v are the output of <cite>linalg.svd</cite> or
+<cite>sklearn.utils.extmath.randomized_svd</cite>, with matching inner
+dimensions so one can compute <cite>np.dot(u * s, v)</cite>.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>u_adjusted, v_adjusted</strong> : arrays with the same dimensions</p>
+<p class="last">as the input.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>scikit-learn implementation</p>
+</dd></dl>
+
 </div>
 
     <div class="postmeta">

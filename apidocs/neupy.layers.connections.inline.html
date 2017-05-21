@@ -15,7 +15,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="NeuPy is a Python library for Artificial Neural Networks. NeuPy supports many different types of Neural Networks from a simple perceptron to deep learning models.">
         <meta name="viewport" content="width=device-width">
-        <title>neupy.layers.connections package &mdash; NeuPy</title>
+        <title>neupy.layers.connections.inline module &mdash; NeuPy</title>
             <link rel="stylesheet" href="../_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="../_static/sphinx.css" type="text/css">
             <link rel="stylesheet" href="../_static/main.css" type="text/css">
@@ -190,22 +190,68 @@
     </nav>
 
 <div class="main-container" role="main"><div class="main wrapper body clearfix"><article>
-    <div class="section" id="neupy-layers-connections-package">
-<h1>neupy.layers.connections package</h1>
-<div class="section" id="submodules">
-<h2>Submodules</h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="neupy.layers.connections.base.html">neupy.layers.connections.base module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="neupy.layers.connections.graph.html">neupy.layers.connections.graph module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="neupy.layers.connections.inline.html">neupy.layers.connections.inline module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="neupy.layers.connections.utils.html">neupy.layers.connections.utils module</a></li>
-</ul>
-</div>
-</div>
-<div class="section" id="module-neupy.layers.connections">
-<span id="module-contents"></span><h2>Module contents</h2>
-</div>
+    <div class="section" id="module-neupy.layers.connections.inline">
+<span id="neupy-layers-connections-inline-module"></span><h1>neupy.layers.connections.inline module</h1>
+<dl class="class">
+<dt id="neupy.layers.connections.inline.EventTracker">
+<em class="property">class </em><span class="descclassname">neupy.layers.connections.inline.</span><span class="descname">EventTracker</span><span class="sig-paren">(</span><em>) -&gt; new empty dictionary dict(mapping) -&gt; new dictionary initialized from a mapping object's (key</em>, <em>value) pairs dict(iterable) -&gt; new dictionary initialized as if via: d = {} for k</em>, <em>v in iterable: d[k] = v dict(**kwargs) -&gt; new dictionary initialized with the name=value pairs in the keyword argument list.  For example:  dict(one=1</em>, <em>two=2</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/layers/connections/inline.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd><dl class="method">
+<dt id="neupy.layers.connections.inline.EventTracker.activate_on">
+<span class="descname">activate_on</span><span class="sig-paren">(</span><em>key</em>, <em>events</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/layers/connections/inline.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neupy.layers.connections.inline.EventTracker.add">
+<span class="descname">add</span><span class="sig-paren">(</span><em>key</em>, <em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/layers/connections/inline.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neupy.layers.connections.inline.EventTracker.is_gt_before_gt">
+<span class="descname">is_gt_before_gt</span><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/layers/connections/inline.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neupy.layers.connections.inline.EventTracker.is_lt_before_lt">
+<span class="descname">is_lt_before_lt</span><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/layers/connections/inline.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neupy.layers.connections.inline.GlobalConnectionState">
+<em class="property">class </em><span class="descclassname">neupy.layers.connections.inline.</span><span class="descname">GlobalConnectionState</span><span class="sig-paren">(</span><em>) -&gt; new empty dictionary dict(mapping) -&gt; new dictionary initialized from a mapping object's (key</em>, <em>value) pairs dict(iterable) -&gt; new dictionary initialized as if via: d = {} for k</em>, <em>v in iterable: d[k] = v dict(**kwargs) -&gt; new dictionary initialized with the name=value pairs in the keyword argument list.  For example:  dict(one=1</em>, <em>two=2</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/layers/connections/inline.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd><dl class="method">
+<dt id="neupy.layers.connections.inline.GlobalConnectionState.key_to_id">
+<span class="descname">key_to_id</span><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/layers/connections/inline.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neupy.layers.connections.inline.InlineConnection">
+<em class="property">class </em><span class="descclassname">neupy.layers.connections.inline.</span><span class="descname">InlineConnection</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/layers/connections/inline.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd><dl class="method">
+<dt id="neupy.layers.connections.inline.InlineConnection.compare">
+<span class="descname">compare</span><span class="sig-paren">(</span><em>left</em>, <em>right</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/layers/connections/inline.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neupy.layers.connections.inline.InlineConnection.events">
+<span class="descname">events</span><em class="property"> = {}</em><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/layers/connections/inline.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neupy.layers.connections.inline.InlineConnection.left_states">
+<span class="descname">left_states</span><em class="property"> = {}</em><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/layers/connections/inline.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neupy.layers.connections.inline.InlineConnection.right_states">
+<span class="descname">right_states</span><em class="property"> = {}</em><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/layers/connections/inline.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 
     <div class="postmeta">

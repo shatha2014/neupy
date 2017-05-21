@@ -15,7 +15,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="NeuPy is a Python library for Artificial Neural Networks. NeuPy supports many different types of Neural Networks from a simple perceptron to deep learning models.">
         <meta name="viewport" content="width=device-width">
-        <title>neupy.layers.connections package &mdash; NeuPy</title>
+        <title>neupy.algorithms.regularization.max_norm module &mdash; NeuPy</title>
             <link rel="stylesheet" href="../_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="../_static/sphinx.css" type="text/css">
             <link rel="stylesheet" href="../_static/main.css" type="text/css">
@@ -190,22 +190,67 @@
     </nav>
 
 <div class="main-container" role="main"><div class="main wrapper body clearfix"><article>
-    <div class="section" id="neupy-layers-connections-package">
-<h1>neupy.layers.connections package</h1>
-<div class="section" id="submodules">
-<h2>Submodules</h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="neupy.layers.connections.base.html">neupy.layers.connections.base module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="neupy.layers.connections.graph.html">neupy.layers.connections.graph module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="neupy.layers.connections.inline.html">neupy.layers.connections.inline module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="neupy.layers.connections.utils.html">neupy.layers.connections.utils module</a></li>
-</ul>
+    <div class="section" id="module-neupy.algorithms.regularization.max_norm">
+<span id="neupy-algorithms-regularization-max-norm-module"></span><h1>neupy.algorithms.regularization.max_norm module</h1>
+<dl class="class">
+<dt id="neupy.algorithms.regularization.max_norm.MaxNormRegularization">
+<em class="property">class </em><span class="descclassname">neupy.algorithms.regularization.max_norm.</span><span class="descname">MaxNormRegularization</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/regularization/max_norm.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Max-norm regularization algorithm will clip norm of the
+parameter in case if it will exceed maximum limit.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">norm</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">max_norm</span><span class="p">:</span>
+    <span class="n">weight</span> <span class="o">=</span> <span class="n">max_norm</span> <span class="o">*</span> <span class="n">weight</span> <span class="o">/</span> <span class="n">norm</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
+</pre></div>
 </div>
+<br><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>max_norm</strong> : int, float</p>
+<blockquote>
+<div><p>Any parameter that has norm greater than this value
+will be clipped. Defaults to <span class="docutils literal"><span class="pre">10</span></span>.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Warns:</th><td class="field-body"><p class="first last"><strong>It works with any algorithm based on the backpropagation.</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<dl class="docutils">
+<dt>[1] N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever,</dt>
+<dd>R. Salakhutdinov. Dropout: A Simple Way to Prevent
+Neural Networks from Overfitting.
+<a class="reference external" href="http://jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf">http://jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf</a></dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">neupy</span> <span class="kn">import</span> <span class="n">algorithms</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bpnet</span> <span class="o">=</span> <span class="n">algorithms</span><span class="o">.</span><span class="n">GradientDescent</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">max_norm</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">addons</span><span class="o">=</span><span class="p">[</span><span class="n">algorithms</span><span class="o">.</span><span class="n">MaxNormRegularization</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="module-neupy.layers.connections">
-<span id="module-contents"></span><h2>Module contents</h2>
-</div>
+<dl class="method">
+<dt id="neupy.algorithms.regularization.max_norm.MaxNormRegularization.init_param_updates">
+<span class="descname">init_param_updates</span><span class="sig-paren">(</span><em>layer</em>, <em>parameter</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/regularization/max_norm.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neupy.algorithms.regularization.max_norm.MaxNormRegularization.max_norm">
+<span class="descname">max_norm</span><em class="property"> = None</em><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/regularization/max_norm.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neupy.algorithms.regularization.max_norm.MaxNormRegularization.options">
+<span class="descname">options</span><em class="property"> = {'max_norm': Option(class_name='MaxNormRegularization', value=NumberProperty(name=&quot;max_norm&quot;))}</em><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/regularization/max_norm.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 
     <div class="postmeta">
