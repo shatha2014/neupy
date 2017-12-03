@@ -15,7 +15,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="NeuPy is a Python library for Artificial Neural Networks. NeuPy supports many different types of Neural Networks from a simple perceptron to deep learning models.">
         <meta name="viewport" content="width=device-width">
-        <title>neupy.algorithms.ensemble.mixture_of_experts module &mdash; NeuPy</title>
+        <title>neupy.architectures.mixture_of_experts module &mdash; NeuPy</title>
             <link rel="stylesheet" href="../_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="../_static/sphinx.css" type="text/css">
             <link rel="stylesheet" href="../_static/main.css" type="text/css">
@@ -186,109 +186,91 @@
         <li class="main-nav">
           <a href="../pages/cheatsheet.html">Cheat sheet</a>
         </li>
+        <li class="main-nav">
+          <a href="../pages/model_zoo.html">Model Zoo</a>
+        </li>
       </ul>
     </nav>
 
 <div class="main-container" role="main"><div class="main wrapper body clearfix"><article>
-    <div class="section" id="module-neupy.algorithms.ensemble.mixture_of_experts">
-<span id="neupy-algorithms-ensemble-mixture-of-experts-module"></span><h1>neupy.algorithms.ensemble.mixture_of_experts module</h1>
-<dl class="class">
-<dt id="neupy.algorithms.ensemble.mixture_of_experts.MixtureOfExperts">
-<em class="property">class </em><span class="descclassname">neupy.algorithms.ensemble.mixture_of_experts.</span><span class="descname">MixtureOfExperts</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/ensemble/mixture_of_experts.py"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Mixture of Experts ensemble algorithm for GradientDescent
-based Neural Networks.</p>
+    <div class="section" id="module-neupy.architectures.mixture_of_experts">
+<span id="neupy-architectures-mixture-of-experts-module"></span><h1>neupy.architectures.mixture_of_experts module</h1>
+<dl class="function">
+<dt id="neupy.architectures.mixture_of_experts.mixture_of_experts">
+<span class="descclassname">neupy.architectures.mixture_of_experts.</span><span class="descname">mixture_of_experts</span><span class="sig-paren">(</span><em>networks</em>, <em>gating_layer=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/architectures/mixture_of_experts.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Generates mixture of experts architecture from the set of
+networks that has the same input and output shapes.</p>
+<p>Mixture of experts learns to how to mix results from different
+networks in order to get better performances. It adds gating layer
+that using input data tries to figure out which of the networks
+will make better contribution to the final result. The final result
+mixes from all networks using different weights. The higher the weight
+the larger contribution from the individual layer.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>networks</strong> : list</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>networks</strong> : list of connections or networks</p>
 <blockquote>
-<div><p>List of networks based on <a class="reference internal" href="neupy.algorithms.gd.base.html#neupy.algorithms.gd.base.GradientDescent" title="neupy.algorithms.gd.base.GradientDescent"><span class="xref py py-class docutils literal"><span class="pre">GradientDescent</span></span></a>
-algorithm. Each network should have the same input size.</p>
+<div><p>These networks will be combine into mixture of experts.
+Every network should have single 1D input layer and
+single output layer. Another restriction is that all networks
+should expect the same input and output layers.</p>
 </div></blockquote>
-<p><strong>gating_network</strong> : object</p>
+<p><strong>gating_layer</strong> : None or layer</p>
+<blockquote>
+<div><p>In case if value equal to <cite>None</cite> that the following layer
+will be created.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">gating_layer</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Softmax</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">networks</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Output from the gating layer should be 1D and equal to
+the number of networks.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">connection</p>
+<blockquote>
+<div><p>Mixture of experts network that combine all networks into
+single one and adds gating layer to it.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>ValueError</strong></p>
 <blockquote class="last">
-<div><p><a class="reference internal" href="neupy.algorithms.gd.base.html#neupy.algorithms.gd.base.GradientDescent" title="neupy.algorithms.gd.base.GradientDescent"><span class="xref py py-class docutils literal"><span class="pre">GradientDescent</span></span></a> based neural network that
-has 2 layers and final layer is a <a class="reference internal" href="neupy.layers.activations.html#neupy.layers.activations.Softmax" title="neupy.layers.activations.Softmax"><span class="xref py py-class docutils literal"><span class="pre">Softmax</span></span></a>.
-Network&#8217;s output size must be equal to number of
-networks in the mixture model.</p>
+<div><p>In case if there is some problem with input networks
+or custom gating layer.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">preprocessing</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">neupy</span> <span class="kn">import</span> <span class="n">algorithms</span><span class="p">,</span> <span class="n">layers</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">neupy.estimators</span> <span class="kn">import</span> <span class="n">rmsle</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">neupy</span> <span class="kn">import</span> <span class="n">layers</span><span class="p">,</span> <span class="n">algorithms</span><span class="p">,</span> <span class="n">architectures</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">network</span> <span class="o">=</span> <span class="n">architectures</span><span class="o">.</span><span class="n">mixture_of_experts</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="n">layers</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">layers</span><span class="o">.</span><span class="n">Relu</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">),</span>
+<span class="gp">... </span>    <span class="n">layers</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">layers</span><span class="o">.</span><span class="n">Relu</span><span class="p">(</span><span class="mi">33</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">layers</span><span class="o">.</span><span class="n">Relu</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">),</span>
+<span class="gp">... </span>    <span class="n">layers</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">layers</span><span class="o">.</span><span class="n">Relu</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">layers</span><span class="o">.</span><span class="n">Relu</span><span class="p">(</span><span class="mi">25</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">layers</span><span class="o">.</span><span class="n">Relu</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">),</span>
+<span class="gp">... </span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">network</span>
+<span class="go">10 -&gt; [... 12 layers ...] -&gt; 5</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_diabetes</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">dataset</span><span class="o">.</span><span class="n">target</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">input_scaler</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">MinMaxScaler</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span> <span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output_scaler</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">MinMaxScaler</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">input_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">output_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">target</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">train_size</span><span class="o">=</span><span class="mf">0.8</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="gp">...</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">insize</span><span class="p">,</span> <span class="n">outsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">networks</span> <span class="o">=</span> <span class="p">[</span>
-<span class="gp">... </span>    <span class="n">algorithms</span><span class="o">.</span><span class="n">GradientDescent</span><span class="p">((</span><span class="n">insize</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">outsize</span><span class="p">),</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">algorithms</span><span class="o">.</span><span class="n">GradientDescent</span><span class="p">((</span><span class="n">insize</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">outsize</span><span class="p">),</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span>
-<span class="gp">... </span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">n_networks</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">networks</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">moe</span> <span class="o">=</span> <span class="n">algorithms</span><span class="o">.</span><span class="n">MixtureOfExperts</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">networks</span><span class="o">=</span><span class="n">networks</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">gating_network</span><span class="o">=</span><span class="n">algorithms</span><span class="o">.</span><span class="n">GradientDescent</span><span class="p">(</span>
-<span class="gp">... </span>        <span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">insize</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">layers</span><span class="o">.</span><span class="n">Softmax</span><span class="p">(</span><span class="n">n_networks</span><span class="p">),</span>
-<span class="gp">... </span>        <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-<span class="gp">... </span>        <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="p">)</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">moe</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y_predicted</span> <span class="o">=</span> <span class="n">moe</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rmsle</span><span class="p">(</span><span class="n">output_scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_test</span><span class="p">),</span>
-<span class="gp">... </span>      <span class="n">output_scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">())</span>
-<span class="go">0.44680253132714459</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gdnet</span> <span class="o">=</span> <span class="n">algorithms</span><span class="o">.</span><span class="n">Momentum</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="rubric">Methods</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="70%" />
-<col width="30%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>train(self, input_data, target_data, epochs=100):</td>
-<td>Train neural network.</td>
-</tr>
-</tbody>
-</table>
-<dl class="attribute">
-<dt id="neupy.algorithms.ensemble.mixture_of_experts.MixtureOfExperts.options">
-<span class="descname">options</span><em class="property"> = {'verbose': Option(class_name='Verbose', value=VerboseProperty(name=&quot;verbose&quot;))}</em><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/ensemble/mixture_of_experts.py"><span class="viewcode-link">[source]</span></a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neupy.algorithms.ensemble.mixture_of_experts.MixtureOfExperts.predict">
-<span class="descname">predict</span><span class="sig-paren">(</span><em>input_data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/ensemble/mixture_of_experts.py"><span class="viewcode-link">[source]</span></a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neupy.algorithms.ensemble.mixture_of_experts.MixtureOfExperts.train">
-<span class="descname">train</span><span class="sig-paren">(</span><em>input_data</em>, <em>target_data</em>, <em>epochs=100</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/ensemble/mixture_of_experts.py"><span class="viewcode-link">[source]</span></a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 </div>

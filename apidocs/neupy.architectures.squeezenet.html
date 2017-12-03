@@ -15,7 +15,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="NeuPy is a Python library for Artificial Neural Networks. NeuPy supports many different types of Neural Networks from a simple perceptron to deep learning models.">
         <meta name="viewport" content="width=device-width">
-        <title>neupy.helpers.logs module &mdash; NeuPy</title>
+        <title>neupy.architectures.squeezenet module &mdash; NeuPy</title>
             <link rel="stylesheet" href="../_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="../_static/sphinx.css" type="text/css">
             <link rel="stylesheet" href="../_static/main.css" type="text/css">
@@ -186,52 +186,50 @@
         <li class="main-nav">
           <a href="../pages/cheatsheet.html">Cheat sheet</a>
         </li>
+        <li class="main-nav">
+          <a href="../pages/model_zoo.html">Model Zoo</a>
+        </li>
       </ul>
     </nav>
 
 <div class="main-container" role="main"><div class="main wrapper body clearfix"><article>
-    <div class="section" id="module-neupy.helpers.logs">
-<span id="neupy-helpers-logs-module"></span><h1>neupy.helpers.logs module</h1>
-<dl class="class">
-<dt id="neupy.helpers.logs.Verbose">
-<em class="property">class </em><span class="descclassname">neupy.helpers.logs.</span><span class="descname">Verbose</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/helpers/logs.py"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Class that controls NeuPy logging.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>verbose</strong> : bool</p>
-<blockquote class="last">
-<div><p>Property controls verbose output interminal. <span class="docutils literal"><span class="pre">True</span></span> enables
-informative output in the terminal and <span class="docutils literal"><span class="pre">False</span></span> -
-disable it. Defaults to <span class="docutils literal"><span class="pre">False</span></span>.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Attributes</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="8%" />
-<col width="92%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>logs</td>
-<td>(TerminalLogger) <span class="docutils literal"><span class="pre">TerminalLogger</span></span> instance.</td>
-</tr>
-</tbody>
-</table>
-<dl class="attribute">
-<dt id="neupy.helpers.logs.Verbose.options">
-<span class="descname">options</span><em class="property"> = {'verbose': Option(class_name='Verbose', value=VerboseProperty(name=&quot;verbose&quot;))}</em><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/helpers/logs.py"><span class="viewcode-link">[source]</span></a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neupy.helpers.logs.Verbose.verbose">
-<span class="descname">verbose</span><em class="property"> = None</em><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/helpers/logs.py"><span class="viewcode-link">[source]</span></a></dt>
-<dd></dd></dl>
-
+    <div class="section" id="module-neupy.architectures.squeezenet">
+<span id="neupy-architectures-squeezenet-module"></span><h1>neupy.architectures.squeezenet module</h1>
+<dl class="function">
+<dt id="neupy.architectures.squeezenet.squeezenet">
+<span class="descclassname">neupy.architectures.squeezenet.</span><span class="descname">squeezenet</span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/architectures/squeezenet.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>SqueezeNet network architecture with random parameters.
+Parameters can be loaded using <span class="docutils literal"><span class="pre">neupy.storage</span></span> module.</p>
+<p>SqueezeNet has roughly 1.2 million parameters. It is almost
+50 times less than in AlexNet. Parameters can be stored as 5Mb
+file.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="neupy.architectures.vgg16.html#neupy.architectures.vgg16.vgg16" title="neupy.architectures.vgg16.vgg16"><span class="xref py py-class docutils literal"><span class="pre">vgg16</span></span></a></dt>
+<dd>VGG16 network</dd>
+<dt><a class="reference internal" href="neupy.architectures.vgg19.html#neupy.architectures.vgg19.vgg19" title="neupy.architectures.vgg19.vgg19"><span class="xref py py-class docutils literal"><span class="pre">vgg19</span></span></a></dt>
+<dd>VGG19 network</dd>
+<dt><a class="reference internal" href="neupy.architectures.alexnet.html#neupy.architectures.alexnet.alexnet" title="neupy.architectures.alexnet.alexnet"><span class="xref py py-class docutils literal"><span class="pre">alexnet</span></span></a></dt>
+<dd>AlexNet network</dd>
+<dt><a class="reference internal" href="neupy.architectures.resnet.html#neupy.architectures.resnet.resnet50" title="neupy.architectures.resnet.resnet50"><span class="xref py py-class docutils literal"><span class="pre">resnet50</span></span></a></dt>
+<dd>ResNet50 network</dd>
+</dl>
+</div>
+<p class="rubric">References</p>
+<p>SqueezeNet: AlexNet-level accuracy with 50x fewer parameters
+and &lt;0.5MB model size
+<a class="reference external" href="https://arxiv.org/abs/1602.07360">https://arxiv.org/abs/1602.07360</a></p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">neupy</span> <span class="kn">import</span> <span class="n">architectures</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">squeezenet</span> <span class="o">=</span> <span class="n">architectures</span><span class="o">.</span><span class="n">squeezenet</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">squeezenet</span>
+<span class="go">(3, 227, 227) -&gt; [... 67 layers ...] -&gt; 1000</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">neupy</span> <span class="kn">import</span> <span class="n">algorithms</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">network</span> <span class="o">=</span> <span class="n">algorithms</span><span class="o">.</span><span class="n">Momentum</span><span class="p">(</span><span class="n">squeezenet</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>

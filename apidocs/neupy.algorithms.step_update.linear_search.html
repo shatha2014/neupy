@@ -186,6 +186,9 @@
         <li class="main-nav">
           <a href="../pages/cheatsheet.html">Cheat sheet</a>
         </li>
+        <li class="main-nav">
+          <a href="../pages/model_zoo.html">Model Zoo</a>
+        </li>
       </ul>
     </nav>
 
@@ -243,7 +246,7 @@ default to <span class="docutils literal"><span class="pre">golden</span></span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">data_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">target_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">target</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">train_size</span><span class="o">=</span><span class="mf">0.85</span>
+<span class="gp">... </span>    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.15</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cgnet</span> <span class="o">=</span> <span class="n">algorithms</span><span class="o">.</span><span class="n">ConjugateGradient</span><span class="p">(</span>

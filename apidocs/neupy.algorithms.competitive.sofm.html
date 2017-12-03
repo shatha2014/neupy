@@ -186,6 +186,9 @@
         <li class="main-nav">
           <a href="../pages/cheatsheet.html">Cheat sheet</a>
         </li>
+        <li class="main-nav">
+          <a href="../pages/model_zoo.html">Model Zoo</a>
+        </li>
       </ul>
     </nav>
 
@@ -222,11 +225,11 @@ neighbour neurons.</p>
 <p><strong>std</strong> : int, float</p>
 <blockquote>
 <div><p>Parameters controls learning rate for each neighbour.
-The further neigbour neuron from the winning neuron
+The further neighbour  neuron from the winning neuron
 the smaller that learning rate for it. Learning rate
 scales based on the factors produced by the normal
 distribution with center in the place of a winning
-neuron and stanard deviation specified as a parameter.
+neuron and standard deviation specified as a parameter.
 The learning rate for the winning neuron is always equal
 to the value specified in the <span class="docutils literal"><span class="pre">step</span></span> parameter and for
 neighbour neurons it&#8217;s always lower.</p>
@@ -318,7 +321,7 @@ during the training.</p>
 <blockquote>
 <div><p>Neural network weights.
 Value defined manualy should have shape <span class="docutils literal"><span class="pre">(n_inputs,</span> <span class="pre">n_outputs)</span></span>.</p>
-<p>Also it&#8217;s possible to initialized weights base on the
+<p>Also, it&#8217;s possible to initialized weights base on the
 training data. There are two options:</p>
 <ul class="simple">
 <li><span class="docutils literal"><span class="pre">sample_from_data</span></span> - Before starting the training will
@@ -411,24 +414,44 @@ disable it. Defaults to <span class="docutils literal"><span class="pre">False</
 <p class="rubric">Methods</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="54%" />
-<col width="46%" />
+<col width="24%" />
+<col width="76%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td>predict(input_data)</td>
+<tr class="row-odd"><td>init_weights(train_data)</td>
+<td>Initialized weights besed on the input data. It works only for the <cite>init_pca</cite> and <cite>sample_from_data</cite> options. For other cases it will throw an error.</td>
+</tr>
+<tr class="row-even"><td>predict(input_data)</td>
 <td>Predicts output for the specified input.</td>
 </tr>
-<tr class="row-even"><td>train(input_train, summary=&#8217;table&#8217;, epochs=100)</td>
+<tr class="row-odd"><td>train(input_train, summary=&#8217;table&#8217;, epochs=100)</td>
 <td>Train neural network.</td>
 </tr>
-<tr class="row-odd"><td>fit(*args, **kwargs)</td>
+<tr class="row-even"><td>fit(*args, **kwargs)</td>
 <td>Alias to the <span class="docutils literal"><span class="pre">train</span></span> method.</td>
 </tr>
 </tbody>
 </table>
 <dl class="class">
+<dt id="neupy.algorithms.competitive.sofm.SOFM.DistanceParameter">
+<em class="property">class </em><span class="descname">DistanceParameter</span><span class="sig-paren">(</span><em>name</em>, <em>func</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/competitive/sofm.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd><dl class="attribute">
+<dt id="neupy.algorithms.competitive.sofm.SOFM.DistanceParameter.func">
+<span class="descname">func</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/competitive/sofm.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="neupy.algorithms.competitive.sofm.SOFM.DistanceParameter.name">
+<span class="descname">name</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/competitive/sofm.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="neupy.algorithms.competitive.sofm.SOFM.GridTypeMethods">
-<em class="property">class </em><span class="descname">GridTypeMethods</span><span class="sig-paren">(</span><em>name</em>, <em>find_neighbours</em>, <em>find_step_scaler</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/competitive/sofm.py"><span class="viewcode-link">[source]</span></a></dt>
+<em class="property">class </em><span class="descclassname">SOFM.</span><span class="descname">GridTypeMethods</span><span class="sig-paren">(</span><em>name</em>, <em>find_neighbours</em>, <em>find_step_scaler</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/competitive/sofm.py"><span class="viewcode-link">[source]</span></a></dt>
 <dd><dl class="attribute">
 <dt id="neupy.algorithms.competitive.sofm.SOFM.GridTypeMethods.find_neighbours">
 <span class="descname">find_neighbours</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/competitive/sofm.py"><span class="viewcode-link">[source]</span></a></dt>
@@ -462,6 +485,11 @@ disable it. Defaults to <span class="docutils literal"><span class="pre">False</
 <dl class="attribute">
 <dt id="neupy.algorithms.competitive.sofm.SOFM.grid_type">
 <span class="descclassname">SOFM.</span><span class="descname">grid_type</span><em class="property"> = None</em><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/competitive/sofm.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neupy.algorithms.competitive.sofm.SOFM.init_weights">
+<span class="descclassname">SOFM.</span><span class="descname">init_weights</span><span class="sig-paren">(</span><em>input_train</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/competitive/sofm.py"><span class="viewcode-link">[source]</span></a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -529,6 +557,11 @@ disable it. Defaults to <span class="docutils literal"><span class="pre">False</
 </tbody>
 </table>
 </dd></dl>
+
+<dl class="method">
+<dt id="neupy.algorithms.competitive.sofm.SOFM.train_epoch">
+<span class="descclassname">SOFM.</span><span class="descname">train_epoch</span><span class="sig-paren">(</span><em>input_train</em>, <em>target_train</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/competitive/sofm.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="neupy.algorithms.competitive.sofm.SOFM.update_indexes">

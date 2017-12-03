@@ -1,7 +1,7 @@
-neupy.helpers.progressbar module
+neupy.architectures.vgg19 module
 ================================
 
-.. automodule:: neupy.helpers.progressbar
+.. automodule:: neupy.architectures.vgg19
     :members:
     :undoc-members:
     :show-inheritance:

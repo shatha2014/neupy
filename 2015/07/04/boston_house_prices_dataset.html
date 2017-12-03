@@ -186,6 +186,9 @@
         <li class="main-nav">
           <a href="../../../pages/cheatsheet.html">Cheat sheet</a>
         </li>
+        <li class="main-nav">
+          <a href="../../../pages/model_zoo.html">Model Zoo</a>
+        </li>
       </ul>
     </nav>
 
@@ -357,7 +360,7 @@ To fix this issue we should transfrom all columns to get similar ranges.</p>
 <span class="n">target_scaler</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">MinMaxScaler</span><span class="p">()</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">data_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">target</span> <span class="o">=</span> <span class="n">target_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">target_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>After transformation data looks like this.</p>

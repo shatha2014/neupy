@@ -186,19 +186,22 @@
         <li class="main-nav">
           <a href="../../pages/cheatsheet.html">Cheat sheet</a>
         </li>
+        <li class="main-nav">
+          <a href="../../pages/model_zoo.html">Model Zoo</a>
+        </li>
       </ul>
     </nav>
 
 <div class="main-container" role="main"><div class="main wrapper body clearfix"><article>
     <div class="section" id="train-network-on-gpu">
 <h1>Train network on GPU</h1>
-<p>NeuPy is based on the <a class="reference external" href="http://deeplearning.net/software/theano/">Theano</a> framework and which means that you can easily train neural networks with constructible architectures on GPU.</p>
-<p>To learn more about how GPU works on Theano you can check the <a class="reference external" href="http://deeplearning.net/software/theano/tutorial/using_gpu.html">this tutorial</a>.</p>
-<p>The simples way to train netwrok on GPU is to run script with the following flag specified at the beggining of the command.</p>
+<p>NeuPy is based on the <a class="reference external" href="http://deeplearning.net/software/theano/">Theano</a> framework and it means that you can easily train neural networks with constructible architectures on GPU.</p>
+<p>To learn more about how Theano works with GPU works, you can check <a class="reference external" href="http://deeplearning.net/software/theano/tutorial/using_gpu.html">this tutorial</a>.</p>
+<p>The simples way to train network on GPU is to run script with the following flag specified at the beginning of the command.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nv">THEANO_FLAGS</span><span class="o">=</span><span class="s2">&quot;device=cuda0&quot;</span> python train_network.py
 </pre></div>
 </div>
-<p>Where <span class="docutils literal"><span class="pre">cuda0</span></span> is the name of your device. It can be different value on different machines.</p>
+<p>Where <span class="docutils literal"><span class="pre">cuda0</span></span> is the name of your GPU device. Value can be different on different machines.</p>
 </div>
 
     <div class="postmeta">

@@ -186,6 +186,9 @@
         <li class="main-nav">
           <a href="../pages/cheatsheet.html">Cheat sheet</a>
         </li>
+        <li class="main-nav">
+          <a href="../pages/model_zoo.html">Model Zoo</a>
+        </li>
       </ul>
     </nav>
 
@@ -195,7 +198,7 @@
 <dl class="class">
 <dt id="neupy.algorithms.ensemble.dan.DynamicallyAveragedNetwork">
 <em class="property">class </em><span class="descclassname">neupy.algorithms.ensemble.dan.</span><span class="descname">DynamicallyAveragedNetwork</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/algorithms/ensemble/dan.py"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Dynamically Averaged Network (DAN) weighted ensamble
+<dd><p>Dynamically Averaged Network (DAN) weighted ensemble
 for binary classification problems.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -227,7 +230,7 @@ be between <span class="docutils literal"><span class="pre">0</span></span> and 
 <span class="gp">... </span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="mf">0.7</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dan</span> <span class="o">=</span> <span class="n">algorithms</span><span class="o">.</span><span class="n">DynamicallyAveragedNetwork</span><span class="p">([</span>

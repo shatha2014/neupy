@@ -15,7 +15,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="NeuPy is a Python library for Artificial Neural Networks. NeuPy supports many different types of Neural Networks from a simple perceptron to deep learning models.">
         <meta name="viewport" content="width=device-width">
-        <title>neupy.helpers.progressbar module &mdash; NeuPy</title>
+        <title>neupy.architectures package &mdash; NeuPy</title>
             <link rel="stylesheet" href="../_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="../_static/sphinx.css" type="text/css">
             <link rel="stylesheet" href="../_static/main.css" type="text/css">
@@ -186,76 +186,31 @@
         <li class="main-nav">
           <a href="../pages/cheatsheet.html">Cheat sheet</a>
         </li>
+        <li class="main-nav">
+          <a href="../pages/model_zoo.html">Model Zoo</a>
+        </li>
       </ul>
     </nav>
 
 <div class="main-container" role="main"><div class="main wrapper body clearfix"><article>
-    <div class="section" id="module-neupy.helpers.progressbar">
-<span id="neupy-helpers-progressbar-module"></span><h1>neupy.helpers.progressbar module</h1>
-<dl class="class">
-<dt id="neupy.helpers.progressbar.Progressbar">
-<em class="property">class </em><span class="descclassname">neupy.helpers.progressbar.</span><span class="descname">Progressbar</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/helpers/progressbar.py"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Get an iterable object, and return an iterator which acts
-exactly like the iterable, but prints a progress meter and updates
-it every time a value is requested.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>iterable</strong> : list, tuple</p>
-<p><strong>update_freq</strong> : float</p>
-<blockquote>
-<div><p>Says how often to update progressbar (is seconds).
-Useful in case if iterations are very fast.
-Defaults to <span class="docutils literal"><span class="pre">0.1</span></span>.</p>
-</div></blockquote>
-<p><strong>description</strong> : str</p>
-<blockquote>
-<div><p>Can contain a short string, describing the progress,
-that is added in the beginning of the line.</p>
-</div></blockquote>
-<p><strong>file</strong> : object</p>
-<blockquote class="last">
-<div><p>Can be a file-like object to output the progress message to.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="neupy.helpers.progressbar.Progressbar.clean">
-<span class="descname">clean</span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/helpers/progressbar.py"><span class="viewcode-link">[source]</span></a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neupy.helpers.progressbar.Progressbar.update_status">
-<span class="descname">update_status</span><span class="sig-paren">(</span><em>n_finished</em>, <em>elapsed</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/helpers/progressbar.py"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Update progressbar status in the specified IO file.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>n_finished</strong> : int</p>
-<blockquote>
-<div><p>Number of finished iterations.</p>
-</div></blockquote>
-<p><strong>elapsed</strong> : int</p>
-<blockquote class="last">
-<div><p>Number of seconds passed since start</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="neupy.helpers.progressbar.Progressbar.write">
-<span class="descname">write</span><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/helpers/progressbar.py"><span class="viewcode-link">[source]</span></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+    <div class="section" id="neupy-architectures-package">
+<h1>neupy.architectures package</h1>
+<div class="section" id="submodules">
+<h2>Submodules</h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="neupy.architectures.alexnet.html">neupy.architectures.alexnet module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="neupy.architectures.mixture_of_experts.html">neupy.architectures.mixture_of_experts module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="neupy.architectures.resnet.html">neupy.architectures.resnet module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="neupy.architectures.squeezenet.html">neupy.architectures.squeezenet module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="neupy.architectures.vgg16.html">neupy.architectures.vgg16 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="neupy.architectures.vgg19.html">neupy.architectures.vgg19 module</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="module-neupy.architectures">
+<span id="module-contents"></span><h2>Module contents</h2>
+</div>
 </div>
 
     <div class="postmeta">

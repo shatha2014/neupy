@@ -15,7 +15,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="NeuPy is a Python library for Artificial Neural Networks. NeuPy supports many different types of Neural Networks from a simple perceptron to deep learning models.">
         <meta name="viewport" content="width=device-width">
-        <title>neupy.helpers package &mdash; NeuPy</title>
+        <title>neupy.architectures.alexnet module &mdash; NeuPy</title>
             <link rel="stylesheet" href="../_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="../_static/sphinx.css" type="text/css">
             <link rel="stylesheet" href="../_static/main.css" type="text/css">
@@ -186,26 +186,54 @@
         <li class="main-nav">
           <a href="../pages/cheatsheet.html">Cheat sheet</a>
         </li>
+        <li class="main-nav">
+          <a href="../pages/model_zoo.html">Model Zoo</a>
+        </li>
       </ul>
     </nav>
 
 <div class="main-container" role="main"><div class="main wrapper body clearfix"><article>
-    <div class="section" id="neupy-helpers-package">
-<h1>neupy.helpers package</h1>
-<div class="section" id="submodules">
-<h2>Submodules</h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="neupy.helpers.logs.html">neupy.helpers.logs module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="neupy.helpers.progressbar.html">neupy.helpers.progressbar module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="neupy.helpers.table.html">neupy.helpers.table module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="neupy.helpers.terminal.html">neupy.helpers.terminal module</a></li>
-</ul>
+    <div class="section" id="module-neupy.architectures.alexnet">
+<span id="neupy-architectures-alexnet-module"></span><h1>neupy.architectures.alexnet module</h1>
+<dl class="function">
+<dt id="neupy.architectures.alexnet.alexnet">
+<span class="descclassname">neupy.architectures.alexnet.</span><span class="descname">alexnet</span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/architectures/alexnet.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>AlexNet network architecture with random parameters. Parameters
+can be loaded using <span class="docutils literal"><span class="pre">neupy.storage</span></span> module.</p>
+<p>Originally AlexNet was built in order to solve image classification
+problem. It was used in the ImageNet competition. The goal of the
+competition is to build a model that classifies image into one of
+the 1,000 categories. Categories include animals, objects, transports
+and so on.</p>
+<p>AlexNet has roughly 61 million parameters.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="neupy.architectures.vgg16.html#neupy.architectures.vgg16.vgg16" title="neupy.architectures.vgg16.vgg16"><span class="xref py py-class docutils literal"><span class="pre">vgg16</span></span></a></dt>
+<dd>VGG16 network</dd>
+<dt><a class="reference internal" href="neupy.architectures.vgg19.html#neupy.architectures.vgg19.vgg19" title="neupy.architectures.vgg19.vgg19"><span class="xref py py-class docutils literal"><span class="pre">vgg19</span></span></a></dt>
+<dd>VGG19 network</dd>
+<dt><a class="reference internal" href="neupy.architectures.squeezenet.html#neupy.architectures.squeezenet.squeezenet" title="neupy.architectures.squeezenet.squeezenet"><span class="xref py py-class docutils literal"><span class="pre">squeezenet</span></span></a></dt>
+<dd>SqueezeNet network</dd>
+<dt><a class="reference internal" href="neupy.architectures.resnet.html#neupy.architectures.resnet.resnet50" title="neupy.architectures.resnet.resnet50"><span class="xref py py-class docutils literal"><span class="pre">resnet50</span></span></a></dt>
+<dd>ResNet50 network</dd>
+</dl>
 </div>
+<p class="rubric">References</p>
+<p>ImageNet Classification with Deep Convolutional Neural Networks
+<a class="reference external" href="https://goo.gl/479oZZ">https://goo.gl/479oZZ</a></p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">neupy</span> <span class="kn">import</span> <span class="n">architectures</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">alexnet</span> <span class="o">=</span> <span class="n">architectures</span><span class="o">.</span><span class="n">alexnet</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">alexnet</span>
+<span class="go">(3, 227, 227) -&gt; [... 37 layers ...] -&gt; 1000</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">neupy</span> <span class="kn">import</span> <span class="n">algorithms</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">network</span> <span class="o">=</span> <span class="n">algorithms</span><span class="o">.</span><span class="n">Momentum</span><span class="p">(</span><span class="n">alexnet</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="module-neupy.helpers">
-<span id="module-contents"></span><h2>Module contents</h2>
-</div>
+</dd></dl>
+
 </div>
 
     <div class="postmeta">

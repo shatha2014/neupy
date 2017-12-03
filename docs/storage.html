@@ -28,7 +28,7 @@
         <script>window.jQuery || document.write('<script src="../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="../_static/plugins.js"></script>
         <script src="../_static/main.js"></script>
-        <link rel="next" title="Secondary" href="secondary.html" /><link rel="prev" title="Scikit-learn compatibility" href="algorithms/sklearn-compatibility.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.html" /><script type="text/javascript">
+        <link rel="next" title="Secondary" href="secondary.html" /><link rel="prev" title="Transfer Learning" href="transfer-learning.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
         VERSION:     '1.5',
@@ -186,6 +186,9 @@
         <li class="main-nav">
           <a href="../pages/cheatsheet.html">Cheat sheet</a>
         </li>
+        <li class="main-nav">
+          <a href="../pages/model_zoo.html">Model Zoo</a>
+        </li>
       </ul>
     </nav>
 
@@ -217,20 +220,71 @@
     <span class="n">parameters</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The stored object in the pickle file has the following format.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s1">&#39;layer-name-1&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">...</span><span class="p">]),</span>
-        <span class="s1">&#39;bias&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">...</span><span class="p">]),</span>
-    <span class="p">},</span>
-    <span class="s1">&#39;layer-name-2&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">...</span><span class="p">]),</span>
-        <span class="s1">&#39;bias&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">...</span><span class="p">]),</span>
-    <span class="p">},</span>
-    <span class="o">...</span>
-<span class="p">}</span>
+<p>Data in the <cite>parameters</cite> variable is easely accesible.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="go">[&#39;layers&#39;, &#39;graph&#39;, &#39;metadata&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">])</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">layer_data</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">]:</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Name: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">layer_data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]))</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Available keys: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">layer_data</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">layer_data</span><span class="p">[</span><span class="s1">&#39;parameters&#39;</span><span class="p">]:</span>
+<span class="gp">... </span>        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Parameters: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">layer_data</span><span class="p">[</span><span class="s1">&#39;parameters&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+<span class="gp">... </span>        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Weight shape: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">layer_data</span><span class="p">[</span><span class="s1">&#39;parameters&#39;</span><span class="p">][</span><span class="s1">&#39;weight&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">Name: input-1</span>
+<span class="go">Available keys: [&#39;name&#39;, &#39;parameters&#39;, &#39;class_name&#39;, &#39;input_shape&#39;, &#39;configs&#39;, &#39;output_shape&#39;]</span>
+<span class="go">--------------------</span>
+<span class="go">Name: relu-1</span>
+<span class="go">Available keys: [&#39;name&#39;, &#39;parameters&#39;, &#39;class_name&#39;, &#39;input_shape&#39;, &#39;configs&#39;, &#39;output_shape&#39;]</span>
+<span class="go">Parameters: [&#39;bias&#39;, &#39;weight&#39;]</span>
+<span class="go">Weight shape: (10, 20)</span>
+<span class="go">--------------------</span>
+<span class="go">Name: relu-2</span>
+<span class="go">Available keys: [&#39;name&#39;, &#39;parameters&#39;, &#39;class_name&#39;, &#39;input_shape&#39;, &#39;configs&#39;, &#39;output_shape&#39;]</span>
+<span class="go">Parameters: [&#39;bias&#39;, &#39;weight&#39;]</span>
+<span class="go">Weight shape: (20, 30)</span>
+<span class="go">--------------------</span>
+<span class="go">Name: softmax-1</span>
+<span class="go">Available keys: [&#39;name&#39;, &#39;parameters&#39;, &#39;class_name&#39;, &#39;input_shape&#39;, &#39;configs&#39;, &#39;output_shape&#39;]</span>
+<span class="go">Parameters: [&#39;bias&#39;, &#39;weight&#39;]</span>
+<span class="go">Weight shape: (30, 10)</span>
+<span class="go">--------------------</span>
 </pre></div>
 </div>
+<p>NeuPy supports other storage formats</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Format</th>
+<th class="head">Save function</th>
+<th class="head">Load function</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>pickle file</td>
+<td><a class="reference internal" href="../apidocs/neupy.storage.html#neupy.storage.save_pickle" title="neupy.storage.save_pickle"><span class="xref py py-class docutils literal"><span class="pre">save_pickle</span></span></a> (or <a class="reference internal" href="../apidocs/neupy.storage.html#neupy.storage.save" title="neupy.storage.save"><span class="xref py py-class docutils literal"><span class="pre">save</span></span></a>)</td>
+<td><a class="reference internal" href="../apidocs/neupy.storage.html#neupy.storage.load_pickle" title="neupy.storage.load_pickle"><span class="xref py py-class docutils literal"><span class="pre">load_pickle</span></span></a> (or <a class="reference internal" href="../apidocs/neupy.storage.html#neupy.storage.load" title="neupy.storage.load"><span class="xref py py-class docutils literal"><span class="pre">load</span></span></a>)</td>
+</tr>
+<tr class="row-odd"><td>hdf5 file</td>
+<td><a class="reference internal" href="../apidocs/neupy.storage.html#neupy.storage.save_hdf5" title="neupy.storage.save_hdf5"><span class="xref py py-class docutils literal"><span class="pre">save_hdf5</span></span></a></td>
+<td><a class="reference internal" href="../apidocs/neupy.storage.html#neupy.storage.load_hdf5" title="neupy.storage.load_hdf5"><span class="xref py py-class docutils literal"><span class="pre">load_hdf5</span></span></a></td>
+</tr>
+<tr class="row-even"><td>json file</td>
+<td><a class="reference internal" href="../apidocs/neupy.storage.html#neupy.storage.save_json" title="neupy.storage.save_json"><span class="xref py py-class docutils literal"><span class="pre">save_json</span></span></a></td>
+<td><a class="reference internal" href="../apidocs/neupy.storage.html#neupy.storage.load_json" title="neupy.storage.load_json"><span class="xref py py-class docutils literal"><span class="pre">load_json</span></span></a></td>
+</tr>
+<tr class="row-odd"><td>python dict</td>
+<td><a class="reference internal" href="../apidocs/neupy.storage.html#neupy.storage.save_dict" title="neupy.storage.save_dict"><span class="xref py py-class docutils literal"><span class="pre">save_dict</span></span></a></td>
+<td><a class="reference internal" href="../apidocs/neupy.storage.html#neupy.storage.load_dict" title="neupy.storage.load_dict"><span class="xref py py-class docutils literal"><span class="pre">load_dict</span></span></a></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="save-and-load-algorithms">
 <h2>Save and load algorithms</h2>
@@ -315,7 +369,7 @@ like <span class="docutils literal"><span class="pre">dumps</span></span> or <sp
         
         
         </div><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="algorithms/sklearn-compatibility.html">Scikit-learn compatibility</a></li>
+            <li class="left"> &laquo; <a href="transfer-learning.html">Transfer Learning</a></li>
             <li class="right"><a href="secondary.html">Secondary</a> &raquo; </li>
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Articles</h1>

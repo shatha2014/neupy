@@ -15,7 +15,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="NeuPy is a Python library for Artificial Neural Networks. NeuPy supports many different types of Neural Networks from a simple perceptron to deep learning models.">
         <meta name="viewport" content="width=device-width">
-        <title>neupy.helpers.table module &mdash; NeuPy</title>
+        <title>neupy.core.logs module &mdash; NeuPy</title>
             <link rel="stylesheet" href="../_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="../_static/sphinx.css" type="text/css">
             <link rel="stylesheet" href="../_static/main.css" type="text/css">
@@ -186,224 +186,55 @@
         <li class="main-nav">
           <a href="../pages/cheatsheet.html">Cheat sheet</a>
         </li>
+        <li class="main-nav">
+          <a href="../pages/model_zoo.html">Model Zoo</a>
+        </li>
       </ul>
     </nav>
 
 <div class="main-container" role="main"><div class="main wrapper body clearfix"><article>
-    <div class="section" id="module-neupy.helpers.table">
-<span id="neupy-helpers-table-module"></span><h1>neupy.helpers.table module</h1>
+    <div class="section" id="module-neupy.core.logs">
+<span id="neupy-core-logs-module"></span><h1>neupy.core.logs module</h1>
 <dl class="class">
-<dt id="neupy.helpers.table.TableBuilder">
-<em class="property">class </em><span class="descclassname">neupy.helpers.table.</span><span class="descname">TableBuilder</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/helpers/table.py"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Build ASCII tables using simple structure.</p>
+<dt id="neupy.core.logs.Verbose">
+<em class="property">class </em><span class="descclassname">neupy.core.logs.</span><span class="descname">Verbose</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/core/logs.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Class that controls NeuPy logging.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>*columns</strong></p>
-<blockquote>
-<div><p>Table structure. Accept <span class="docutils literal"><span class="pre">Column</span></span> instance classes.</p>
-</div></blockquote>
-<p><strong>stdout</strong> : func</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>verbose</strong> : bool</p>
 <blockquote class="last">
-<div><p>Function through which the message will be transmitted.</p>
+<div><p>Property controls verbose output interminal. <span class="docutils literal"><span class="pre">True</span></span> enables
+informative output in the terminal and <span class="docutils literal"><span class="pre">False</span></span> -
+disable it. Defaults to <span class="docutils literal"><span class="pre">False</span></span>.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
-<dl class="classmethod">
-<dt id="neupy.helpers.table.TableBuilder.show_full_table">
-<em class="property">classmethod </em><span class="descname">show_full_table</span><span class="sig-paren">(</span><em>columns</em>, <em>values</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/helpers/table.py"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Shows full table. This method is useful in case if all
-table values are available and we can just show them all
-in one table without interations.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="92%" />
+</colgroup>
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>columns</strong> : list</p>
-<blockquote>
-<div><p>List of columns.</p>
-</div></blockquote>
-<p><strong>values</strong> : list of list or tuple</p>
-<blockquote>
-<div><p>List of values. Each element should be a list or
-tuple that contains column values in the same order
-as defined in the <span class="docutils literal"><span class="pre">columns</span></span> parameter.</p>
-</div></blockquote>
-<p><strong>**kwargs</strong></p>
-<blockquote class="last">
-<div><p>Arguments for the <span class="docutils literal"><span class="pre">TableBuilder</span></span> class
-initialization.</p>
-</div></blockquote>
-</td>
+<tr class="row-odd"><td>logs</td>
+<td>(TerminalLogger) <span class="docutils literal"><span class="pre">TerminalLogger</span></span> instance.</td>
 </tr>
 </tbody>
 </table>
-</dd></dl>
+<dl class="attribute">
+<dt id="neupy.core.logs.Verbose.options">
+<span class="descname">options</span><em class="property"> = {'verbose': Option(class_name='Verbose', value=VerboseProperty(name=&quot;verbose&quot;))}</em><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/core/logs.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
 
-</dd></dl>
+<dl class="attribute">
+<dt id="neupy.core.logs.Verbose.verbose">
+<span class="descname">verbose</span><em class="property"> = None</em><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/core/logs.py"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
 
-<dl class="class">
-<dt id="neupy.helpers.table.Column">
-<em class="property">class </em><span class="descclassname">neupy.helpers.table.</span><span class="descname">Column</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/helpers/table.py"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Simple column class that helps discribe structure for
-<span class="docutils literal"><span class="pre">TableBuilder</span></span> class instance.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>name</strong> : str</p>
-<blockquote>
-<div><p>Column name. Value would be displayed in header. In case when
-<span class="docutils literal"><span class="pre">width</span></span> parameter equal to <span class="docutils literal"><span class="pre">None</span></span>, string width will identify
-column width.</p>
-</div></blockquote>
-<p><strong>dtype</strong> : object</p>
-<blockquote>
-<div><p>Column data format. Defaults to <span class="docutils literal"><span class="pre">str</span></span>.</p>
-</div></blockquote>
-<p><strong>width</strong> : int or None</p>
-<blockquote class="last">
-<div><p>Column width. Defaults to <span class="docutils literal"><span class="pre">None</span></span>.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="neupy.helpers.table.Column.format_value">
-<span class="descname">format_value</span><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/helpers/table.py"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Convert input value to specified type</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>value</strong> : object</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">object</p>
-<blockquote class="last">
-<div><p>Function return converted input value to specified
-data type.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="neupy.helpers.table.TimeColumn">
-<em class="property">class </em><span class="descclassname">neupy.helpers.table.</span><span class="descname">TimeColumn</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/helpers/table.py"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Columns useful for time formating from seconds to more
-informative and readable format.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>name</strong> : str</p>
-<blockquote>
-<div><p>Column name. Value would be displayed in header. In case when
-<span class="docutils literal"><span class="pre">width</span></span> parameter equal to <span class="docutils literal"><span class="pre">None</span></span>, string width will identify
-column width.</p>
-</div></blockquote>
-<p><strong>dtype</strong> : object</p>
-<blockquote>
-<div><p>Column data format. Defaults to <span class="docutils literal"><span class="pre">str</span></span>.</p>
-</div></blockquote>
-<p><strong>width</strong> : int or None</p>
-<blockquote class="last">
-<div><p>Column width. Defaults to <span class="docutils literal"><span class="pre">None</span></span>.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="neupy.helpers.table.TimeColumn.format_value">
-<span class="descname">format_value</span><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/helpers/table.py"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Convert input value to specified type</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>value</strong> : object</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">object</p>
-<blockquote class="last">
-<div><p>Function return converted input value to specified
-data type.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="neupy.helpers.table.NumberColumn">
-<em class="property">class </em><span class="descclassname">neupy.helpers.table.</span><span class="descname">NumberColumn</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/helpers/table.py"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Class describe float column type.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>places</strong> : int</p>
-<blockquote>
-<div><p>Float number rounding precision. Defaults to <span class="docutils literal"><span class="pre">6</span></span>.</p>
-</div></blockquote>
-<p><strong>name</strong> : str</p>
-<blockquote>
-<div><p>Column name. Value would be displayed in header. In case when
-<span class="docutils literal"><span class="pre">width</span></span> parameter equal to <span class="docutils literal"><span class="pre">None</span></span>, string width will identify
-column width.</p>
-</div></blockquote>
-<p><strong>dtype</strong> : object</p>
-<blockquote>
-<div><p>Column data format. Defaults to <span class="docutils literal"><span class="pre">str</span></span>.</p>
-</div></blockquote>
-<p><strong>width</strong> : int or None</p>
-<blockquote class="last">
-<div><p>Column width. Defaults to <span class="docutils literal"><span class="pre">None</span></span>.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="neupy.helpers.table.NumberColumn.format_value">
-<span class="descname">format_value</span><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/helpers/table.py"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Round a number to a given precision in decimal digits</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>value</strong> : float</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">float</p>
-<blockquote class="last">
-<div><p>Rounded input value.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="exception">
-<dt id="neupy.helpers.table.TableDrawingError">
-<em class="property">exception </em><span class="descclassname">neupy.helpers.table.</span><span class="descname">TableDrawingError</span><a class="reference external" href="https://github.com/itdxer/neupy/tree/master/neupy/helpers/table.py"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Exception specific for <span class="docutils literal"><span class="pre">TableBuilder</span></span> class functionality.</p>
 </dd></dl>
 
 </div>
