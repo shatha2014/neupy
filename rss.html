@@ -5,13 +5,101 @@
         <link>http://neupy.com/</link>
         <description>Neural Networks in Python</description>
         <language>en-us</language>
-        <pubDate>Sat, 09 Dec 2017 00:00:00 +0100</pubDate>
+        <pubDate>Wed, 13 Dec 2017 00:00:00 +0100</pubDate>
         
+        <item>
+            <link>http://neupy.com/2017/12/13/sofm_art.html</link>
+            <guid>http://neupy.com/2017/12/13/sofm_art.html</guid>
+            <title><![CDATA[The Art of SOFM]]></title>
+            <description><![CDATA[<h1>The Art of SOFM</h1>
+<div class="section" id="introduction">
+<h2>Introduction</h2>
+<p>In this article, I just want to show how beautiful sometimes can be a neural network. I think, it’s quite rare that algorithm can not only extract knowledge from the data, but also produce something beautiful using exactly the same set of training rules without any modifications.</p>
+</div>
+<div class="section" id="the-main-idea">
+<h2>The main idea</h2>
+<p>SOFM consists of multiple neurons that typically arranged in the <strong>grid</strong> with connections between some of the neurons. In this article, we will use grid in the shape of the square that looks like this.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="http://neupy.com/_images/sofm-grid1.png"><img alt="SOFM grid" src="http://neupy.com/_images/sofm-grid1.png" style="width: 30%;"/></a>
+</div>
+<p>During the training iteration we introduce some data point near the grid.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="http://neupy.com/_images/sofm-before-update-with-one-data-point.png"><img alt="SOFM with one data point" src="http://neupy.com/_images/sofm-before-update-with-one-data-point.png" style="width: 70%;"/></a>
+</div>
+<p>SOFM finds neuron that closest to the introduced data point. After that, it pushes neuron towards this data point. In addition, it finds a few neighbour neurons within specified radius, that we call <strong>learning radius</strong>, and pushes these neurons towards data point as well, but not as much as it pushed closest neuron.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="http://neupy.com/_images/sofm-update-with-one-data-point.png"><img alt="SOFM updated after one data point was introduced" src="http://neupy.com/_images/sofm-update-with-one-data-point.png" style="width: 70%;"/></a>
+</div>
+<p>To make it more interesting, we can put few extra points around the same grid.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="http://neupy.com/_images/sofm-without-update.png"><img alt="SOFM state before the update" src="http://neupy.com/_images/sofm-without-update.png" style="width: 70%;"/></a>
+</div>
+<p>And applying one update per each data point at a time we can get nice pattern.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="http://neupy.com/_images/sofm-4-dots-update.png"><img alt="SOFM symmetrically update weights" src="http://neupy.com/_images/sofm-4-dots-update.png" style="width: 70%;"/></a>
+</div>
+<p>We can make patterns look more interestingly if we start moving data points around. Let’s now use only two points and put one on the left and one on the right side from the grid. We do the same SOFM update again, but as soon as it’s done we rotate two data points by 45 degrees counterclockwise. After repeating this process a few times, we can get another pattern.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="http://neupy.com/_images/sofm-update-and-rotate.png"><img alt="SOFM symmetrically update weights rotating data points" src="http://neupy.com/_images/sofm-update-and-rotate.png" style="width: 70%;"/></a>
+</div>
+<p>Black dots are two initial data points. And gray dots show places where we’ve seen these two data points after each new 45 degree rotation.</p>
+<p>It’s pretty cool that this simple approach can produce such a beautiful patterns. We can even define set of variables changing which we can generate different patterns.</p>
+</div>
+<div class="section" id="making-patterns-more-interesting">
+<h2>Making patterns more interesting</h2>
+<p>Randomizing some of the SOFM parameters we can produce different patterns on each run. In this article, we will use 3 most important SOFM parameters:</p>
+<ol class="arabic simple">
+<li>Learning rate</li>
+<li>Learning radius</li>
+<li>Learning rate for the neighbour neurons</li>
+</ol>
+<p><strong>Learning rate</strong> defines by how much we will push neurons during the updated. If learning rate value is small then we won’t push it to far from the initial position.</p>
+<p><strong>Learning radius</strong> defines how many neighbour neurons will be updated. The larger the radius the more neighbours would be updated after each iteration. If learning radius equal to zero then only one neuron will be updated.</p>
+<p>And the last one is a parameter that controls <strong>learning rate for the neighbour neurons</strong>. The larger the value the bigger update neighbour neurons will get.</p>
+</div>
+<div class="section" id="generate-interesting-patterns">
+<h2>Generate interesting patterns</h2>
+<p>As in the example before, we will use only two data points and we will rotate them after each update by 45 degree counterclockwise. Each of the 3 SOFM parameter we randomly sample from the uniform distribution. Here are 16 randomly generated patterns.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="http://neupy.com/_images/sofm-16-generated-patterns.png"><img alt="16 randomly generated patterns with SOFM network" src="http://neupy.com/_images/sofm-16-generated-patterns.png" style="width: 100%;"/></a>
+</div>
+<p>You can see that even small changes in some of the parameters can produce very different results. One of the patterns even look like a bird.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="http://neupy.com/_images/sofm-bird-pattern.png"><img alt="bird pattern generated by SOFM" src="http://neupy.com/_images/sofm-bird-pattern.png" style="width: 50%;"/></a>
+</div>
+</div>
+<div class="section" id="applications">
+<h2>Applications</h2>
+<p>It looks a bit strange to think about this approach in context of practical applications, but there are some things that you can do with these patterns. For instance, it can be used to generate unique avatar images for the new website users. Adding more rules and variables to the image generating function we can make patterns even more diverse.</p>
+<p>I also tried to play a game with these patterns in order to train my intuition. We use SOFM network parameters in order to generate these image, but reverse procedure is also possible. Seeing the generated pattern we can guess parameters that was used to generate it. For instance, here is a simple example of the pattern that looks like star</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="http://neupy.com/_images/sofm-star-pattern.png"><img alt="start pattern generated by SOFM" src="http://neupy.com/_images/sofm-star-pattern.png" style="width: 50%;"/></a>
+</div>
+<p>We can see that only one dot moved in each direction, so we can say that learning radius was zero. Since updated neurons moved far away from the initial grid we can say that learning rate was large.</p>
+<p>Here is another one, more complicated.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="http://neupy.com/_images/sofm-blob-pattern.png"><img alt="blob pattern generated by SOFM" src="http://neupy.com/_images/sofm-blob-pattern.png" style="width: 50%;"/></a>
+</div>
+<p>In this example it’s harder to say what happened, but we have at least one clue.In the center of the grid there are three dots, arranged horizontally, that didn’t move after all updates. Knowing that there are nine dots in the row, we can conclude that learning radius was 2 or 3. We not sure which one, but if you see that there are just 5 dots left on their initial positions then it’s very likely that radius was 3 since we moved more neurons into new positions.</p>
+<p>I hope you got the idea. It’s not always possible to guess the exact values, but each pattern can reveal some clues about the algorithm’s set up.</p>
+</div>
+<div class="section" id="further-reading">
+<h2>Further reading</h2>
+<p>If you want to learn more about SOFM, you can <a class="reference internal" href="http://neupy.com/2017/12/09/sofm_applications.html#sofm-applications"><span>check article</span></a> that covers basic ideas behind SOFM and some of the problems that can be solved with this algorithm.</p>
+</div>
+<div class="section" id="code">
+<h2>Code</h2>
+<p>All the code that was used to generate images in the article you can find in iPython notebook on github.</p>
+</div>
+]]></description>
+             <pubDate>Wed, 13 Dec 2017 00:00:00 +0100</pubDate>
+        </item>
+    
         <item>
             <link>http://neupy.com/2017/12/09/sofm_applications.html</link>
             <guid>http://neupy.com/2017/12/09/sofm_applications.html</guid>
             <title><![CDATA[Self-Organizing Maps and Applications]]></title>
-            <description><![CDATA[<h1><a class="toc-backref" href="#id1">Self-Organizing Maps and Applications</a></h1>
+            <description><![CDATA[<span id="sofm-applications"/><h1><a class="toc-backref" href="#id1">Self-Organizing Maps and Applications</a></h1>
 <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
