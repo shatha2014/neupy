@@ -391,8 +391,8 @@ the training epoch.</li>
 <p class="rubric">Methods</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="23%" />
-<col width="77%" />
+<col width="19%" />
+<col width="81%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>train(input_train, summary=&#8217;table&#8217;, epochs=100)</td>
@@ -402,7 +402,7 @@ the training epoch.</li>
 <td>Alias to the <span class="docutils literal"><span class="pre">train</span></span> method.</td>
 </tr>
 <tr class="row-odd"><td>initialize_nodes(data)</td>
-<td>Network initializes nodes randomly sampling <span class="docutils literal"><span class="pre">n_start_nodes</span></span> from the data. It would be applied automatically before the training in case if graph is empty.</td>
+<td>Network initializes nodes randomly sampling <span class="docutils literal"><span class="pre">n_start_nodes</span></span> from the data. It would be applied automatically before the training in case if graph is empty.  Note: Node re-initialization can reset network.</td>
 </tr>
 </tbody>
 </table>
@@ -608,6 +608,8 @@ neurons and connections between them.</p>
         </div></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Articles</h1>
     <ul><li>
+            <a href="../2018/03/26/making_art_with_growing_neural_gas.html">Making Art with Growing Neural Gas</a>
+        </li><li>
             <a href="../2017/12/17/sofm_text_style.html">Create unique text-style with SOFM</a>
         </li><li>
             <a href="../2017/12/13/sofm_art.html">The Art of SOFM</a>
@@ -615,8 +617,6 @@ neurons and connections between them.</p>
             <a href="../2017/12/09/sofm_applications.html">Self-Organizing Maps and Applications</a>
         </li><li>
             <a href="../2016/12/17/hyperparameter_optimization_for_neural_networks.html">Hyperparameter optimization for Neural Networks</a>
-        </li><li>
-            <a href="../2016/11/12/mnist_classification.html">MNIST Classification</a>
         </li></ul>
 </div></section><section><div class="widget">
     <h1>Install NeuPy</h1>
