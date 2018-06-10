@@ -256,3 +256,36 @@ def find_step_scaler_on_hexagon_grid(grid, center=None, std=1):
     {find_step_scaler_on_rect_grid.std}
     """
     return gaussian_df(grid, mean=1, std=std)
+
+
+# Spiral Approach
+def find_neighbours_on_spiral_grid(grid, center, radius):
+    """
+    Marks neighbors on the spiral grid around specified
+    center within specified radius.
+
+    #ToDo: Please specify the parameters
+    ----------
+
+    Returns
+    -------
+    #ToDo: Please specify the Returns
+
+    #ToDo: Please specify the logic that needs to be executed
+    """
+
+    # temporary code
+    x = 0
+
+
+# Spiral Approach
+@shared_docs(find_step_scaler_on_rect_grid)
+def find_step_scaler_on_spiral_grid(grid, center=None, std=1):
+    """
+    #ToDo: Specify logic
+
+    Parameters
+    ----------
+    #ToDo: Specify paramters
+    """
+    return 0
